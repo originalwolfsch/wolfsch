@@ -1,6 +1,6 @@
 <template>
   <v-app>
-      <h1>Hola</h1>
+      <h2>Hola desde ConDish</h2>
   </v-app>
 </template>
 
