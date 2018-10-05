@@ -1,29 +1,70 @@
 <template lang="html">
-
     <v-layout>
 
-        <v-flex xs12 md4>
+        <v-navigation-drawer v-model="drawer" permanent class="hidden-sm-and-down">
+            <v-list two-line>
 
-            <v-card>
+                <v-subheader>Categories</v-subheader>
 
-                <v-img src="http://www.wallpapermaiden.com/image/2018/10/05/anime-girl-scenic-road-urban-25266.png"></v-img>
+                <v-list-tile to="/lolis">
+                    <v-list-tile-content>
+                        <v-list-title>Lolis</v-list-title>
+                    </v-list-tile-content>
 
 
+                </v-list-tile>
 
 
-            </v-card>
+                <v-list-tile to="/trapitos">
 
-        </v-flex>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Trapitos</v-list-tile-title>
+                    </v-list-tile-content>
+
+
+                </v-list-tile>
+
+
+            </v-list>
+        </v-navigation-drawer>
+
+        <!-- TENES UNA MEJOR IDEA DE COMO HACER QUE ESTO SE HAGA RESPONSIVE? -->
+
+        <v-container class="mt-0" grid-list-xl>
+
+            <v-layout row wrap>
+                <v-flex xs12 sm4 md4>
+                    <v-img class="mr-3" src="https://picsum.photos/510/300?random"></v-img>
+                </v-flex>
+
+                <v-flex xs12 sm4 md4>
+
+
+                    <v-img class="mr-3" src="https://picsum.photos/510/300?random"></v-img>
+
+                </v-flex>
+                <v-flex xs12 sm4 md4>
+
+
+                    <v-img class="mr-3" src="https://picsum.photos/510/300?random"></v-img>
+
+                </v-flex>
+                
+            </v-layout>
+
+
+        </v-container>
 
 
 
     </v-layout>
 
+
 </template>
 
 <script>
-export default {
-}
+    export default {
+    }
 </script>
 
 <style lang="css">

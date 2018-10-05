@@ -7,19 +7,24 @@
           <v-toolbar-items>
               <v-btn flat to="/" class="headline ">WolfSCH</v-btn>
           </v-toolbar-items>
-
+        
           <v-spacer></v-spacer>
 
+            
 
           <v-toolbar-items class="hidden-sm-and-down">
+               <v-btn flat>
+                    <v-icon left>fas fa-search</v-icon>
+                    <v-text-field ></v-text-field>
+               </v-btn>
               <v-btn flat to="/login"><v-icon left>fa-user</v-icon> Login</v-btn>
-              <v-btn flat> <v-icon left>fa-user-plus</i></v-icon> Sign UP</v-btn>
+              <v-btn flat> <v-icon left>fa-user-plus</v-icon> Sign UP</v-btn>
           </v-toolbar-items>
 
       </v-toolbar>
 
 
-      <v-navigation-drawer v-model="showMenu" app>
+      <v-navigation-drawer v-model="showMenu" absolute temporary>
           <v-list two-line>
 
               <v-subheader>Profile</v-subheader>
@@ -56,9 +61,6 @@
                       <v-list-tile-title >Lolis</v-list-tile-title>
                   </v-list-tile-content>
 
-                  <v-list-tile-action>
-                      <v-icon color="secondary">fa-user-plus</v-icon>
-                  </v-list-tile-action>
 
               </v-list-tile>
 
@@ -68,21 +70,21 @@
       </v-navigation-drawer>
 
 
-
-      <v-container>
+         
+      
+          
           <router-view></router-view>
-      </v-container>
+      
 
 
   </v-app>
+  
 </template>
 
 <script>
-
 export default {
-    data: () => ({
-        showMenu: false
-    }),
-
-}
+  data: () => ({
+    showMenu: false
+  })
+};
 </script>
