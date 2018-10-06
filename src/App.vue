@@ -15,12 +15,15 @@
               <v-text-field label="Search" class="mr-2"></v-text-field>
           </v-flex>
 
+                <login-modal></login-modal>
+
           <v-toolbar-items class="hidden-sm-and-down">
-              <!-- <v-btn flat to="/login"><v-icon left>fa-user</v-icon> Login</v-btn>
-              <v-btn flat> <v-icon left>fa-user-plus</v-icon> Sign UP</v-btn> -->
-              <v-btn flat to="/login">Login</v-btn>
+             
+
               <v-btn flat>Sign UP</v-btn>
+              
           </v-toolbar-items>
+         
 
       </v-toolbar>
 
@@ -40,7 +43,6 @@
                   </v-list-tile-action>
 
               </v-list-tile>
-
 
               <v-list-tile>
                   <v-list-tile-content>
@@ -70,16 +72,16 @@
 
 
 
-
-
   </v-app>
-
+    
 </template>
 
 <script>
 export default {
   data: () => ({
     showMenu: false
-  })
-}
+    
+  }),
+
+};
 </script>

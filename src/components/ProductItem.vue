@@ -16,9 +16,8 @@
                 <v-btn flat><v-icon left>far fa-heart</v-icon>{{ product.likes}}</v-btn>
             </v-card-actions>
         </v-card>
-
     </v-flex>
-
+        
 </template>
 
 <script>
