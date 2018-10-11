@@ -13,18 +13,40 @@
                 </div>
             </v-card-title>
             <v-card-actions>
-                <v-btn flat><v-icon left>far fa-heart</v-icon>{{ product.likes}}</v-btn>
+                <v-btn flat @click="like(product.likes)" ><v-icon left :color="likeColor">far fa-heart</v-icon>{{ product.likes}}</v-btn>
             </v-card-actions>
         </v-card>
     </v-flex>
-        
+
 </template>
 
 <script>
 
-    export default {
-        props: ['product']
+export default {
+    props: ['product'],
+    data: () => ({
+        liked: false,
+    }),
+    methods: {
+        like(nLikes)
+        {
+            this.liked = !this.liked;
+
+            if (this.liked) {
+                this.product.likes++;
+            } else {
+                this.product.likes--;
+            }
+        }
+    },
+    computed: {
+        likeColor()
+        {
+            return this.liked ? 'red' : '';
+        }
     }
+
+}
 
 </script>
 
