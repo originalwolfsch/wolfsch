@@ -18,12 +18,12 @@
                 <login-modal></login-modal>
 
           <v-toolbar-items class="hidden-sm-and-down">
-             
 
+              <v-btn flat @click="showModalLogin()">Log In</v-btn>
               <v-btn flat>Sign UP</v-btn>
-              
+
           </v-toolbar-items>
-         
+
 
       </v-toolbar>
 
@@ -33,9 +33,9 @@
 
               <v-subheader>Profile</v-subheader>
 
-              <v-list-tile to="/login">
+              <v-list-tile @click="showModalLogin()">
                   <v-list-tile-content>
-                      <v-list-title>Login</v-list-title>
+                      <v-list-tile-title>Login</v-list-tile-title>
                   </v-list-tile-content>
 
                   <v-list-tile-action>
@@ -73,15 +73,22 @@
 
 
   </v-app>
-    
+
 </template>
 
 <script>
 export default {
-  data: () => ({
-    showMenu: false
-    
-  }),
+    data: () => ({
+        showMenu: false
+
+    }),
+    methods: {
+        showModalLogin()
+        {
+            this.$store.commit('setModalLogin', true);
+        },
+
+    },
 
 };
 </script>

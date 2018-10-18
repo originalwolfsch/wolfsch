@@ -1,39 +1,50 @@
 <template>
-    <v-dialog v-model="dialog" width="500" class="hidden-sm-and-down">
+    <v-dialog :value="modaLogin" width="500" persistent>
 
-        <v-btn flat slot="activator">Login</v-btn>
         <v-card>
 
             <v-card-title class="headline secondary white--text " primary-title>
-                Login
+                Log In
             </v-card-title>
 
-            <v-card-text>
-            <v-form ref="form">
-                    <v-text-field v-model="username" label="Username" required></v-text-field>
-                    <v-text-field v-model="username" label="Password" required> </v-text-field>
 
-                    
-                    <v-card-actions>
-                        <v-checkbox label="Remember my user"></v-checkbox>
-                        <v-spacer></v-spacer>
+            <v-form ref="formLogin" @submit.prevent="sendData()" >
 
-                        <v-btn flat @click="dialog = false">
-                            Cancel
-                        </v-btn>
+                <v-container grid-list-lg>
+                    <v-layout wrap>
 
-                        <v-btn flat @click="submit">
-                            Enter
-                        </v-btn>
+                        <v-flex xs12 md6>
+                            <v-text-field v-model="username" label="Username"
+                                          :rules="[rules.required]"
+                            ></v-text-field>
+                        </v-flex>
 
-                    </v-card-actions>
-            
-                    
+
+                        <v-flex xs12 md6>
+                            <v-text-field v-model="password" label="Password"
+                                          :rules="[rules.required, rules.min]"
+                            ></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+
+
+
+                <v-card-actions class="mt-3">
+                    <v-btn flat @click="dismissLogin()" color="secondary">
+                        Cancel
+                    </v-btn>
+
+                    <v-btn flat @click="sendData()" color="secondary">
+                        Enter
+                    </v-btn>
+
+                </v-card-actions>
+
+
             </v-form>
 
-            </v-card-text>
-
-    </v-card>
+        </v-card>
 
     </v-dialog>
 
@@ -41,12 +52,38 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 
-  data: () => ({
-    dialog: false
-  })
-  
+    data: () => ({
+        dialog: false,
+        username: '',
+        password: '',
+        rules: {
+            required: v => !!v || 'Is required',
+            min: v => v.length >= 8 || 'Min 8 characters',
+        },
+    }),
+    computed: {
+        ...mapGetters(['modaLogin']),
+    },
+    methods: {
+        dismissLogin()
+        {
+            this.$store.commit('setModalLogin', false);
+        },
+        sendData()
+        {
+            if ( this.$refs.formLogin.validate() ) {
+                alert('Form Validate');
+            } else {
+                alert('Form Invalidate');
+            }
+
+        },
+    }
+
 };
 </script>
 

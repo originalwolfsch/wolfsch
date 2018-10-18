@@ -1,29 +1,33 @@
-import express from 'express';
-import path from 'path';
-import mongoose from 'mongoose';
-
-import User from './models/User';
-
-export default app => {
-
-    mongoose.connect('mongodb://localhost/wolfsch')
-        .then( () => console.log('la db esta conectada') );
-
-    app.use(express.json());
-
-    app.use( express.static(path.join(__dirname, '../dist')) );
+// Dependencies
+const express = require('express');
+const app = express();
+const path = require('path');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 
-    app.get('/api/user', (req, res) => {
-        User.find()
-            .then( response => {
-                res.json(response);
-            });
-    });
+// Connect to database Mongo
+mongoose.connect('mongodb://localhost/wolfsch')
+    .then( () => console.log('la db esta conectada') );
 
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../dist', 'index.html'));
-    });
+// Middlewares
+app.use( morgan('dev') );
 
-}
+
+// Settings
+app.set('port', process.env.PORT || 3000);
+app.use( express.json() );
+app.use( express.static(path.join(__dirname, '../dist')) );
+
+
+// Routes
+app.use('/api/user', require('./routes/user'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
+
+
+// Listen server
+const server = app.listen(app.get('port'), () => console.log('Server ON'));

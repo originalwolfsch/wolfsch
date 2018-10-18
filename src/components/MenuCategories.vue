@@ -6,7 +6,7 @@
 
         <v-list-tile to="/lolis">
             <v-list-tile-content>
-                <v-list-title>Lolis</v-list-title>
+                <v-list-tile-title>Lolis</v-list-tile-title>
             </v-list-tile-content>
 
 
